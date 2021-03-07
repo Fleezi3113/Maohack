@@ -1,0 +1,30 @@
+package me.fleezi.maohack.movement;
+
+import org.lwjgl.input.Keyboard;
+
+import me.fleezi.maohack.EventUpdate;
+import me.fleezi.maohack.Events;
+import me.fleezi.maohack.modules.Categories;
+import me.fleezi.maohack.modules.Module;
+
+
+public class Fly extends Module {
+
+	public Fly() {
+		super("Fly", Categories.MOVEMENT, Keyboard.KEY_H);
+	}
+	
+	
+	public void onPreUpdate() {
+		super.onPreUpdate();
+		
+		if(mc.player.capabilities.allowFlying = true) { 
+			mc.player.capabilities.isFlying = true;
+		}
+	} 
+	
+	} 
+	
+	
+	
+
