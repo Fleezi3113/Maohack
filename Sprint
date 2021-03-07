@@ -16,7 +16,7 @@ public class Sprint extends Module {
 		super.onPreUpdate();
 		
 		if(mc.player.movementInput.field_192832_b > 0) { //field_192832_b means move forward i think?
-			mc.player.setSprinting(true);
+			mc.player.setSprinting(true); 
 		}
 	}
 
