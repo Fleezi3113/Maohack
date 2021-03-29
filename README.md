@@ -1,2 +1,2 @@
 # Maohack
-this is where the completely safe, not ratted or tokenlogged code for Maohack is.
+this is where the code for maohack is
