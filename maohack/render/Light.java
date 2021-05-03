@@ -2,14 +2,15 @@ package me.fleezi.maohack.render;
 
 import org.lwjgl.input.Keyboard;
 
-import me.fleezi.maohack.EventUpdate;
-import me.fleezi.maohack.Events;
+import me.fleezi.maohack.events.Event;
+import me.fleezi.maohack.events.listeners.EventUpdate;
 import me.fleezi.maohack.modules.Module;
+
 
 public class Light extends Module {
 
 	public Light() {
-		super("Light", Category.MOVEMENT, Keyboard.KEY_N);
+		super("Light", Keyboard.KEY_N, Category.MOVEMENT);
 	}
 	
 	public void onEnable() {
@@ -19,6 +20,4 @@ public class Light extends Module {
 	public void onDisable() {
 		mc.gameSettings.gammaSetting = 1;
 	} 
-	
-	
 }

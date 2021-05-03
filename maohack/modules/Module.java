@@ -2,71 +2,39 @@ package me.fleezi.maohack.modules;
 
 import org.lwjgl.input.Keyboard;
 
-import me.fleezi.maohack.Events;
+import me.fleezi.maohack.events.Event;
 import net.minecraft.client.Minecraft;
 
 public class Module {
 	
 	public String name;
-	private Category category;
-	private String description;
-	private int keyCode;
-	private String[] modes;
-	
-	private boolean enabled;
-	
-	protected Minecraft mc = Minecraft.getMinecraft();
+	public Category category;
+	public int keyCode;
 	public boolean toggled;
+	public Minecraft mc = Minecraft.getMinecraft();
 	
-	public Module(String name, Category category) {
-		this(name, category, null, Keyboard.KEY_NONE, "Default");
-	}
-	
-	public Module(String name, Category category, String description) {
-		this(name, category, description, Keyboard.KEY_NONE, "Default");
-	}
-	
-	public Module(String name, Category category, int keyCode) {
-		this(name, category, null, keyCode, "Default");
-	}
-	
-	public Module(String name, Category c, String description, int keyCode, String... modes) {
+	public Module(String name, int key, Category c) {
 		this.name = name;
+		this.keyCode = key;
 		this.category = c;
-		this.description = description;
-		this.keyCode = keyCode;
-		this.modes = modes;
-		
 	}
+	
+	public boolean isEnabled() {
+		System.out.println("Calling isEnabled()");
+		return toggled;
+	} 
 	
 	public int getKey() {
 		return keyCode;
 	}
 	
-	public void onEvent(Events e) {
-			
-	}
-	
-	public boolean isEnabled() {
-		return toggled;
-	}
-	
-	public void setEnabled(boolean enabled) {
-		this.enabled = enabled;
-	}
-	
-	public void onRender() {
+	public void onEvent(Event e) {
 		
 	}
 	
-	
-	
-	public void onKeyPressed(int keyCode) {
-		if(this.keyCode == keyCode) {
-			this.toggle();
-		}
-	}
 	public void toggle() {
+		System.out.println("Calling toggle()");
+				
 		toggled = !toggled;
 		if(toggled) {
 			onEnable();
@@ -76,17 +44,21 @@ public class Module {
 	}
 	
 	public void onEnable() {
-		
+		System.out.println("Calling onEnable()");
 	}
 	
 	public void onDisable() {
-		
+		System.out.println("Calling onDisable()");
 	} 
-
-	public enum Category {
-		
-		COMBAT, CHAT, RENDER, MOVEMENT, PLAYER, MISC
-	}
-
 	
+public enum Category {
+		
+		COMBAT("Combat"), CHAT("Chat"), RENDER("Render"), MOVEMENT("Movement"), PLAYER("Player"), MISC("Misc");
+		
+	public String name;
+	
+	Category(String name) {
+		this.name = name;
+		}
+	}
 }
